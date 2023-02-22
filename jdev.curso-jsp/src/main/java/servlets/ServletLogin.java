@@ -30,25 +30,31 @@ public class ServletLogin extends HttpServlet {
 
 		String login = request.getParameter("login");
 		String senha = request.getParameter("senha");
-		
-		//Validar dados da tela
-		if(login != null && !login.isEmpty() && senha != null && !senha.isEmpty()) {
+
+		// Validar dados da tela
+		if (login != null && !login.isEmpty() && senha != null && !senha.isEmpty()) {
 			ModelLogin modelLogin = new ModelLogin();
 			modelLogin.setLogin(login);
-			modelLogin.setSenha(senha);	
-		}else {
+			modelLogin.setSenha(senha);
+
+			// Simulação
+			if (modelLogin.getLogin().equalsIgnoreCase("admin") && modelLogin.getSenha().equalsIgnoreCase("admin")) {
+				
+				request.getSession().setAttribute("usuario", modelLogin.getLogin());//Mater o usuário logado
+				RequestDispatcher redirecionar = request.getRequestDispatcher("principal/principal.jsp");
+				redirecionar.forward(request, response);
+				
+			}else {
+				RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
+				request.setAttribute("msg", "Informe um login e senha corretamente!");
+				redirecionar.forward(request, response);
+			}
+		} else {
 			RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
 			request.setAttribute("msg", "Informe um login e senha corretamente!");
 			redirecionar.forward(request, response);
 		}
-		
 
-		
-		
-		//Precisa de um metodo de autenticação, pegar os parametros e passar os objetos, criar um filtro de login, connexão com o banco
-		
-		
-		
 	}
 
 }
