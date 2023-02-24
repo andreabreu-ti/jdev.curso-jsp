@@ -14,8 +14,7 @@ import jakarta.servlet.http.HttpFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
-//Intercepta todas as requisições que vierem do projeto ou mapeamento
-@WebFilter(urlPatterns = { "/principal/*" })
+@WebFilter(urlPatterns = { "/principal/*" }) // Intercepta todas as requisições que vierem do projeto ou mapeamento
 public class FilterAutenticacao extends HttpFilter implements Filter {
 
 	public FilterAutenticacao() {
@@ -35,22 +34,25 @@ public class FilterAutenticacao extends HttpFilter implements Filter {
 
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession();
-		
+
 		String usuarioLogado = (String) session.getAttribute("usuario");
-		
+
 		String urlParaAutenticar = req.getServletPath();// Url que está sendo acessada
 
 		// Validar se está logado senao redireciona para a tela de login
-		if (usuarioLogado == null && !urlParaAutenticar.equalsIgnoreCase("/principal/ServletLogin")) { // Não stá logado
+		if (usuarioLogado == null  || usuarioLogado.equals("null") && 
+				!urlParaAutenticar.equalsIgnoreCase("/principal/ServletLogin")) { // Não está
+																										// logado
 
 			RequestDispatcher redireciona = request.getRequestDispatcher("/index.jsp?url=" + urlParaAutenticar);
 			request.setAttribute("msg", "Por favor realize o login!");
 			redireciona.forward(request, response);
 			return;// Para a execução e redireciona para o login
 
+		} else {
+			chain.doFilter(request, response);
 		}
 
-		chain.doFilter(request, response);
 	}
 
 	// Executado quando inicia o sistema, inicia os processos e recursos quando o
