@@ -1,0 +1,20 @@
+create database 'jdev-curso-jsp'
+
+USE [jdev-curso-jsp]
+create table model_login
+(
+	login varchar(200),
+	senha varchar(200),
+	constraint login_unque unique(login)
+)
+
+
+INSERT INTO [dbo].[model_login]
+           ([login]
+           ,[senha])
+     VALUES
+           ('admin','admin')
+
+
+select * from model_login
+
