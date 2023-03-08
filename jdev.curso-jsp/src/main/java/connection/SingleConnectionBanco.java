@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 
 public class SingleConnectionBanco {
 
-//	private static String banco = "jdbc:postgresql://localhost:5432/jdev.cursojsp?autoReconnect=true";
 	private static String banco = "jdbc:sqlserver://localhost:1433;databaseName=jdev-curso-jsp;integratedSecurity=false;encrypt=true;trustServerCertificate=true;";
 	private static String user = "jdev";
 	private static String senha = "123456";
