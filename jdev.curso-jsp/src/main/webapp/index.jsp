@@ -24,7 +24,9 @@ h1{
 }
 .msg{
 	font-size: 15px;
-	color: red;
+	color: #664d03;
+	background-color: #fff3cd;
+	border-color: #ff6cb5;
 }
 </style>
 
@@ -37,14 +39,14 @@ h1{
 	<form action="ServletLogin" method="post" class="row g-3 needs-validation" novalidate>
 		<imput type="hidden" value="<%=request.getParameter("url")%>" name="url">
 
-		<div class="col-md-6">
+		<div class="mb-3">
 			<label class="form-label">Login: </label> 
 			<input class="form-control" name="login" type="text" required="required">
 			<div class="invalid-feedback">
       			Informe o Login!!!
     		</div>
 		</div>
-		<div class="col-md-6">
+		<div class="mb-3">
 			<label class="form-label">Senha: </label> 
 			<input class="form-control" name="senha" type="password" required="required">
 			<div class="invalid-feedback">
