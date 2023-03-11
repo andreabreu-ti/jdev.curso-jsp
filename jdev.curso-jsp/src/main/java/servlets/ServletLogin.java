@@ -23,9 +23,18 @@ public class ServletLogin extends HttpServlet {
 	}
 
 	// Recebe os dados pela url em parametros
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doPost(request, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		String acao = request.getParameter("acao");
+
+		if (acao != null && !acao.isEmpty() && acao.equalsIgnoreCase("logout")) {
+			request.getSession().invalidate(); // Invalidar a sessao
+			RequestDispatcher redirecionar = request.getRequestDispatcher("index.jsp");
+			redirecionar.forward(request, response);
+		} else {
+			doPost(request, response);
+		}
+
 	}
 
 	// Recebe os dados enviados por um formulário
@@ -49,7 +58,8 @@ public class ServletLogin extends HttpServlet {
 
 					request.getSession().setAttribute("usuario", modelLogin.getLogin());// Mater o usuário logado
 
-					// Verificar se a url for igual a null ou se essa url vier null, colocar valor padrão
+					// Verificar se a url for igual a null ou se essa url vier null, colocar valor
+					// padrão
 					if (url == null || url.equals("null")) {
 						url = "principal/principal.jsp";
 					}
