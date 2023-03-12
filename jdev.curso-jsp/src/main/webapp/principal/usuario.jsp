@@ -35,38 +35,42 @@
 													</div>
 													<div class="card-block">
 
-														<form class="form-material">
+														<form class="form-material" action="<%= request.getContextPath() %>/ServletUsuarioController" method="post">
 															<div class="form-group form-default form-static-label">
-																<input type="text" name="footer-email"
-																	class="form-control" placeholder="Id do usuário"
-																	required=""> <span class="form-bar"></span> <label
+																<input type="text" name="id" id="id" 
+																	class="form-control" placeholder="Id do usuário" 
+																	readonly="readonly"> <span class="form-bar"></span> <label
 																	class="float-label">Id:</label>
 															</div>
 															<div class="form-group form-default form-static-label">
-																<input type="text" name="footer-email"
-																	class="form-control" required=""
+																<input type="text" name="nome" id="nome"
+																	class="form-control" required="required" autocomplete="off"
 																	placeholder="Nome de Usuário"> <span
 																	class="form-bar"></span> <label class="float-label">Nome</label>
 															</div>
 															<div class="form-group form-default form-static-label">
-																<input type="password" name="footer-email"
-																	class="form-control" placeholder="Senha do Usuário"
-																	required=""> <span class="form-bar"></span> <label
-																	class="float-label">Password:</label>
-															</div>
-															<div class="form-group form-default form-static-label">
-																<input type="text" name="footer-email"
+																<input type="email" name="email" id="email"
 																	class="form-control" placeholder="Email do Usuário"
-																	required=""> <span class="form-bar"></span> <label
+																	required="required"> <span class="form-bar"></span> <label
 																	class="float-label">Email:</label>
 															</div>
+															<div class="form-group form-default form-static-label">
+																<input type="text" name="login" id="login"
+																	class="form-control" placeholder="Senha do Usuário"
+																	required="required" autocomplete="off"> <span class="form-bar"></span> <label
+																	class="float-label">Login:</label>
+															</div>
+															<div class="form-group form-default form-static-label">
+																<input type="password" name="senha" id="senha"
+																	class="form-control" placeholder="Senha do Usuário"
+																	required="required" autocomplete="off"> <span class="form-bar"></span> <label
+																	class="float-label">Senha:</label>
+															</div>
+															
 
-															<button class="btn btn-primary waves-effect waves-light">Primary
-																Button</button>
-															<button class="btn btn-success waves-effect waves-light">Success
-																Button</button>
-															<button class="btn btn-info waves-effect waves-light">Info
-																Button</button>
+															<button class="btn btn-primary waves-effect waves-light">Novo</button>
+															<button class="btn btn-success waves-effect waves-light">Salvar</button>
+															<button class="btn btn-info waves-effect waves-light">Excluir</button>
 															<button class="btn btn-warning waves-effect waves-light">Warning
 																Button</button>
 															<button class="btn btn-danger waves-effect waves-light">Danger
