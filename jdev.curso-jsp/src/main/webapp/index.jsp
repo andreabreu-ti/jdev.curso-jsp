@@ -36,7 +36,7 @@ h1{
 	<h1>Bem vindo ao curso JSP</h1>
 
 
-	<form action="ServletLogin" method="post" class="row g-3 needs-validation" novalidate>
+	<form action="<%= request.getContextPath() %>/ServletLogin" method="post" class="row g-3 needs-validation" novalidate>
 		<imput type="hidden" value="<%=request.getParameter("url")%>" name="url">
 
 		<div class="mb-3">
